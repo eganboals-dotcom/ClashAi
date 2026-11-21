@@ -16,10 +16,11 @@ import time
 ROOT = Path(__file__).resolve().parents[1]
 UPSTREAM = ROOT / "vendor" / "FirstLight_CR"
 sys.path.insert(0, str(UPSTREAM))
+LOCAL_JOB_ID = "local"  # topology job ID for one PC without Slurm; the host check still binds a topology to this machine
 
 
-def config():
-    return json.loads((ROOT / "configs/generalist.json").read_text(encoding="utf-8"))
+def config(path=None):
+    return json.loads(Path(path or ROOT / "configs/generalist.json").read_text(encoding="utf-8"))
 
 
 def save_json(path, value):
@@ -92,7 +93,8 @@ def doctor():
     try:
         import torch
         add("cuda", torch.cuda.is_available(), torch.cuda.get_device_name(0) if torch.cuda.is_available() else "Unavailable")
-        add("training_backend", sys.platform == "linux" and torch.distributed.is_nccl_available(), "Upstream PPO requires Linux/CUDA/NCCL and a prepared engine topology")
+        backend = sys.platform == "win32" and torch.distributed.is_gloo_available() or sys.platform == "linux" and torch.distributed.is_nccl_available()
+        add("training_backend", backend, "gloo on Windows or NCCL on Linux, via scripts/local_ppo.py; one CUDA GPU")
     except ImportError as error:
         add("torch", False, str(error))
     for field in ("topology", "deck_pool"):

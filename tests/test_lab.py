@@ -6,7 +6,7 @@ import unittest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 from lab import read_metrics, summarize_metrics, config
-from train import command_for
+from train import command_for, learner_deck_id
 
 
 class MetricsTests(unittest.TestCase):
@@ -32,6 +32,17 @@ class MetricsTests(unittest.TestCase):
         self.assertNotIn("--learner-deck-id", cmd)
         self.assertEqual(cmd[cmd.index("--self-play-percent") + 1], "50")
         self.assertEqual(cmd.count("--fixed-opponent-checkpoint"), 3)
+
+    def test_giant_graveyard_recipe_fixes_the_learner_deck(self):
+        cfg = config(Path(__file__).resolve().parents[1] / "configs/giant-graveyard.json")
+        cmd = command_for(cfg, Path("output"), 1, Path("strict.pt"))
+        self.assertEqual(cmd[cmd.index("--learner-deck-id") + 1], learner_deck_id(cfg))
+        self.assertIn("--fixed-learner-opponent-mix", cmd)
+        self.assertEqual(cmd[cmd.index("--self-play-percent") + 1], "0")
+        self.assertEqual(cmd[cmd.index("--fixed-opponent-percent") + 1], "60")
+        self.assertEqual(cmd[cmd.index("--learner-opponent-hard-percent") + 1], "30")
+        self.assertIn("--il-anchor-checkpoint", cmd)
+        self.assertEqual(cmd[-2:], ["--resume-checkpoint", "strict.pt"])
 
     def test_resume_is_explicit(self):
         cmd = command_for(config(), Path("new-attempt"), 100, Path("strict.pt"))

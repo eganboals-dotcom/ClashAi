@@ -1,0 +1,29 @@
+{
+  "upstream_commit": "4c82496ad5af49a3c7ea2392f26ff7bac33d9707",
+  "note": "Giant Graveyard specialist, following upstream's Hog 2.6 specialist 2 recipe: start from General, fixed learner deck, no self-play, 60% frozen opponents and 40% IL anchor, opponent decks 30% focus / 40% usage-weighted / 30% hard, no deck-specific reward shaping. The learner deck is the owner's Deck 10 (Evo Witch, Hero Bowler, Evo Giant Snowball, Graveyard, Giant, Guards, Zappies, Arrows; Tower Princess; 4.0 elixir), which appears 94 times in the public replays and is inside the 7,089-deck pool.",
+  "checkpoint": "vendor/FirstLight_CR/checkpoints/General/checkpoint-step-00000460.pt",
+  "learner_deck": {"tower": "tower-princess", "cards": ["witch-ev1", "bowler-hero", "giant-snowball-ev1", "graveyard", "giant", "guards", "zappies", "arrows"]},
+  "learner_opponent_mix_percent": {"focus": 30, "weighted": 40, "hard": 30},
+  "opponents": [
+    "vendor/FirstLight_CR/checkpoints/General/checkpoint-step-00000460.pt",
+    "vendor/FirstLight_CR/checkpoints/2_6hog_expert/hog26-specialist2.pt"
+  ],
+  "il_anchor_checkpoint": "vendor/FirstLight_CR/checkpoints/IL/checkpoint-step-00029396.pt",
+  "il_opening_force_after_seconds": 15,
+  "deck_pool": "local/deck-pool.json",
+  "topology": "local/topology.json",
+  "self_play_percent": 0,
+  "fixed_opponent_percent": 60,
+  "learning_rate": 0.00001,
+  "lane_minibatch_size": 32,
+  "lane_microbatch_size": 8,
+  "sequence_chunk_steps": 16,
+  "rollout_segment_seconds": 40,
+  "ppo_epochs": 1,
+  "seed": 20261121,
+  "target_games": 100000,
+  "max_hours": 168,
+  "max_restarts": 2,
+  "stall_minutes": 30,
+  "minimum_free_gib": 10
+}

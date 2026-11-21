@@ -1,0 +1,31 @@
+{
+  "schema": "clashai-benchmark-suite.v1",
+  "note": "Starter suite. Giant Graveyard lists are composed for coverage (Hero Giant, two evolutions, two tower troops), not replay-derived meta decks. The other decks are upstream focus decks and are therefore inside the training pool. Once the replay pool exists, `scripts/benchmark.py build-suite` adds replay-derived Giant Graveyard and held-out decks.",
+  "decks": {
+    "giant-graveyard": {"tower": "tower-princess", "source": "composed", "cards": ["giant-hero", "graveyard", "valkyrie-ev1", "bomber-ev1", "poison", "barbarian-barrel", "mega-minion", "ice-spirit"]},
+    "giant-graveyard-cannoneer": {"tower": "cannoneer", "source": "composed", "cards": ["giant-hero", "graveyard", "valkyrie-ev1", "bomber-ev1", "poison", "barbarian-barrel", "mega-minion", "ice-spirit"]},
+    "hog-2.6": {"tower": "tower-princess", "source": "upstream focus rank 7", "cards": ["cannon-ev1", "skeletons-ev1", "musketeer-hero", "hog-rider", "fireball", "ice-golem", "ice-spirit", "the-log"]},
+    "golem-beatdown": {"tower": "tower-princess", "source": "upstream focus rank 2", "cards": ["electro-dragon-ev1", "elite-barbarians-ev1", "berserker-hero", "golem", "skeleton-dragons", "tornado", "barbarian-barrel", "elixir-collector"]},
+    "xbow": {"tower": "tower-princess", "source": "upstream focus rank 6", "cards": ["archers-ev1", "tesla-ev1", "knight-hero", "x-bow", "fireball", "skeletons", "electro-spirit", "the-log"]},
+    "lava-balloon": {"tower": "tower-princess", "source": "upstream focus rank 9", "cards": ["baby-dragon-ev1", "zap-ev1", "mega-minion-hero", "lava-hound", "barbarians", "fireball", "balloon", "tombstone"]},
+    "golem-royal-chef": {"tower": "royal-chef", "source": "upstream focus rank 10", "cards": ["elite-barbarians-ev1", "zap-ev1", "mini-pekka-hero", "golem", "phoenix", "night-witch", "bomber", "arrows"]},
+    "graveyard-furnace": {"tower": "tower-princess", "source": "upstream focus rank 15", "cards": ["furnace-ev1", "valkyrie-ev1", "berserker-hero", "graveyard", "poison", "goblin-hut", "ice-spirit", "barbarian-barrel"]},
+    "royal-giant": {"tower": "tower-princess", "source": "upstream focus rank 16", "cards": ["royal-giant-ev1", "royal-ghost-ev1", "barbarian-barrel-hero", "hunter", "fisherman", "fireball", "skeletons", "electro-spirit"]},
+    "mega-knight-duchess": {"tower": "dagger-duchess", "source": "upstream focus rank 18", "cards": ["battle-ram-ev1", "inferno-dragon-ev1", "mini-pekka-hero", "mega-knight", "mother-witch", "bomber", "freeze", "zap"]},
+    "giant-double-hero-duchess": {"tower": "dagger-duchess", "source": "upstream focus rank 20", "cards": ["elite-barbarians-ev1", "giant-hero", "mega-minion-hero", "dark-prince", "fireball", "bomber", "zap", "rage"]}
+  },
+  "matchups": [
+    ["giant-graveyard", "hog-2.6"],
+    ["giant-graveyard", "golem-beatdown"],
+    ["giant-graveyard", "xbow"],
+    ["giant-graveyard", "lava-balloon"],
+    ["giant-graveyard", "royal-giant"],
+    ["giant-graveyard", "mega-knight-duchess"],
+    ["giant-graveyard-cannoneer", "graveyard-furnace"],
+    ["giant-graveyard-cannoneer", "golem-royal-chef"],
+    ["hog-2.6", "xbow"],
+    ["lava-balloon", "mega-knight-duchess"],
+    ["royal-giant", "giant-double-hero-duchess"],
+    ["golem-royal-chef", "graveyard-furnace"]
+  ]
+}
