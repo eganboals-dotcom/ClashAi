@@ -1,0 +1,11 @@
+# Install torch separately from the official CUDA 12.8 index; see bootstrap.ps1.
+numpy==2.1.2
+orjson==3.10.16
+pillow==11.0.0
+pyarrow==19.0.0
+safetensors==0.4.5
+sc-compression==0.6.5
+zstandard==0.25.0
+wandb==0.22.3
+tzdata==2025.2
+pytest==8.3.5

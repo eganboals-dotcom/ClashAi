@@ -1,0 +1,25 @@
+{
+  "upstream_commit": "4c82496ad5af49a3c7ea2392f26ff7bac33d9707",
+  "checkpoint": "vendor/FirstLight_CR/checkpoints/General/checkpoint-step-00000460.pt",
+  "opponents": [
+    "vendor/FirstLight_CR/checkpoints/General/checkpoint-step-00000460.pt",
+    "vendor/FirstLight_CR/checkpoints/active IL/checkpoint-step-00000030.pt",
+    "vendor/FirstLight_CR/checkpoints/2_6hog_expert/hog26-specialist2.pt"
+  ],
+  "deck_pool": "local/deck-pool.json",
+  "topology": "local/topology.json",
+  "self_play_percent": 50,
+  "fixed_opponent_percent": 50,
+  "learning_rate": 0.00001,
+  "lane_minibatch_size": 32,
+  "lane_microbatch_size": 8,
+  "sequence_chunk_steps": 16,
+  "rollout_segment_seconds": 40,
+  "ppo_epochs": 1,
+  "seed": 20261120,
+  "target_games": 100000,
+  "max_hours": 168,
+  "max_restarts": 2,
+  "stall_minutes": 30,
+  "minimum_free_gib": 10
+}

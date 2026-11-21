@@ -1,0 +1,3 @@
+[submodule "vendor/FirstLight_CR"]
+	path = vendor/FirstLight_CR
+	url = https://github.com/Jaasssoooonnnnn/FirstLight_CR.git
